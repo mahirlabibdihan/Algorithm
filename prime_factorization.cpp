@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdlib.h>
 
 int isFactor(int n, int a)
 {
@@ -8,11 +7,17 @@ int isFactor(int n, int a)
 
 int isPrime(int n)
 {
-	for (int i = 2; i < n; i++)
+	if(n<=1) return 0;
+	
+	if(n<=3) return 1;
+
+	if(n%2==0|n%3==0)return 0;
+
+	for(int i=5;i*i<=n;i=i+6)
 	{
-		if (n % i == 0) return 0;
+		if((n%i==0)|(n%(i+2)==0)) return 0;
 	}
-	return 1;
+   return 1;
 }
 
 int count(int n, int a)
@@ -43,9 +48,12 @@ int main()
 					printf("%d^%d ", i, count(n, i));
 				}
 			}
-			if (isPrime(n / i))
+			if(i!=n/i)
 			{
-				printf("%d^%d ", n / i, count(n, n / i));
+		   		if (isPrime(n / i))
+			    {
+	  				printf("%d^%d ", n / i, count(n, n / i));
+			    }
 			}
 		}
 	}
