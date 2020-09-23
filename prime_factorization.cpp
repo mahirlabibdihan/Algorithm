@@ -4,7 +4,6 @@ int isFactor(int n, int a)
 {
 	return (n % a == 0);
 }
-
 int isPrime(int n)
 {
 	if(n<=1) return 0;
