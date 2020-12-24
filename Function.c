@@ -1,7 +1,12 @@
 #include<stdio.h> 
 #include<stdlib.h>
 
-//Standard Library Function - Built in functions in c programming which are defined in header files. Only the declaration are there in the header files. Not the source code.
+// return-type function-name (parameter declarations) {
+// definitions and statements
+// }
+
+
+//Standard Library Function - Built in functions in c programming which are defined in header files. Only the prototypes are there in the header files. Not the source code.
 
 //User-Defined Function - Creater by user
 
@@ -10,8 +15,8 @@
 
 
 //Global Variables can be accessed and changed from any function
-//Local Variables can be accessed and changed from the same function only
-//Funtion Parameters are Local Variable
+//Local Variables can be accessed and changed from the same function only.Variable declared within a function can only be used by that function.
+//Function Parameters are Local Variable
 
 
 //main() Function is must for a c program
@@ -67,7 +72,7 @@ void Dihan()
 
 
 
-//Can not return the address of local variable of a function unless it is allocated by malloc
+//Can not return the address of local variable of a function unless it is allocated by malloc. Because the allocated memory is automatically free at the end of function execution. But in malloc the memory needs to be free manually.
 int* LocalAddress()
 {
 	int *a=(int*)malloc(sizeof(int));
