@@ -53,6 +53,7 @@ void Dihan()
 
 
 
+
 //Can not return the address of local variable of a function unless it is allocated by malloc
 int* LocalAddress()
 {
@@ -68,20 +69,24 @@ int* LocalAddress()
 
 
 
+
 //Function can not return more than one variable
 void F1(){}  // No parameter & No return value
 void F2(int a){}  // With parameter & No return value
 int F3(){} // No parameter & with return value
 int F4(int a){} // With parameter & with return value
 
+void Function(int a,int b); //Function prototype or declaration // int a,int b are parameters 
 
-
-
-void Function(int a,int b); //Function protottype or declaration // int a,int b are parameters 
+void FunctionPointer(void (*Function)(int,int)) //Function Pointer as Parameter
+{
+}
 
 int main(int n,char *Argc[]) //Arguments in main function is Command-line argument //We can pass values to main function using command-line
 {
-	Function(5,4); //Calling Function //5,4 are arguments
+	Function(5,4);  
+	//Calling Function //5,4 are arguments
+	FunctionPointer(Function);  //Function Pointer as Argument
 }
 
 void Function(int a,int b) //Function definition = Function Declaration + Statementss
