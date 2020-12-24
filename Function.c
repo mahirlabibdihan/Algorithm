@@ -3,11 +3,14 @@
 
 //Function name is a pointer
 
+
+
 //Pass by refference - Passing the address of a variable
-void PassRef(int *a)
+void PassRef(int *b)
 {
-	//a -> Address of a
-	//*a -> Value of a
+	//b -> Address of b
+	//*b -> Value of b
+	*b=5; // a will also be 5
 }
 void CallPassRef()
 {
@@ -16,7 +19,25 @@ void CallPassRef()
 	int b[5];
 	PassRef(b);
 }
+
+
+
 //Pass by value - Passing the value of a variable
+void PassVal(int b)
+{
+	//b is a local variable of function PassVal
+	//b -> Value of a
+	//&b -> Address of b (not a)
+	b=5; // value of a will not change
+}
+void CallPassVal()
+{
+	int a;
+	PassVal(a);
+}
+
+
+
 
 //Function and variable name can be same unless you use both in the same function
 void Dihan()
