@@ -1,39 +1,52 @@
 #include<stdio.h> 
 #include<stdlib.h>
 
+//Standard Library Function - Built in functions in c programming which are defined in header files. Only the declaration are there in the header files. Not the source code.
+
+//User-Defined Function - Creater by user
+
+
 //Function name is a pointer
 
 
+//Global Variables can be accessed and changed from any function
+//Local Variables can be accessed and changed from the same function only
+//Funtion Parameters are Local Variable
 
-//Pass by refference - Passing the address of a variable --- [ Array always pass by refference ] 
-void PassRef(int *b)
+
+//main() Function is must for a c program
+//main() Function cannot be called from another funtion [Infinity Loop]
+
+
+//Call by refference - Passing the address of a variable --- [ Array always call by refference ] 
+void CallRef(int *b)
 {
 	//b -> Address of b
 	//*b -> Value of b
 	*b=5; // a will also be 5
 }
-void CallPassRef()
+void Callr()
 {
 	int a;
-	PassRef(&a);
+	CallRef(&a);
 	int b[5];
-	PassRef(b);
+	CallRef(b);
 }
 
 
 
-//Pass by value - Passing the value of a variable
-void PassVal(int b)
+//Call by value - Passing the value of a variable
+void CallVal(int b)
 {
 	//b is a local variable of function PassVal
 	//b -> Value of a
 	//&b -> Address of b (not a)
 	b=5; // value of a will not change
 }
-void CallPassVal()
+void Callv()
 {
 	int a;
-	PassVal(a);
+	CallVal(a);
 }
 
 
@@ -68,6 +81,52 @@ int* LocalAddress()
 // }//Incorrect
 
 
+void Print2D(int n,int m,int x[][m])  // Works in C compiler not in C++
+{
+	int i,j;
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<m;j++)
+		{
+			printf("%d ",x[i][j]);
+		}
+		puts("");
+	}
+}
+
+void Print2Das1D(int n,int m,int *x)
+{
+	int i,j;
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<m;j++)
+		{
+			printf("%d ",x[i*m+j]);
+		}
+		puts("");
+	}
+}
+//Passing 2D array to  function
+void Array2D()
+{
+	int a[4]={1,2,3,4};
+	int x[2][4]={1,2,3,4,5,6,7,8};
+	int **y=(int**)x;  // incorrect
+	// Because 2D array is also is also a 1D array.
+	int *z=(int*)x;  //correct
+	int (*w)[4]=x;   //Pointer to First 1D array of 2d array 
+
+	//Access elements
+	//2D array - 2nd row 3rd coloumn
+	// printf("%d\n",*(x[0]+1*4+2));
+	// printf("%d\n",z[1*4+2]);
+	//1D array - 3rd coloumn
+	// printf("%d\n",a[2]);
+
+
+	// Print2D(sizeof(x)/sizeof(x[0]),sizeof(x[0])/sizeof(x[0][0]),x);
+	// Print2Das1D(sizeof(x)/sizeof(x[0]),sizeof(x[0])/sizeof(x[0][0]),(int*)x);
+}
 
 
 //Function can not return more than one variable
@@ -75,6 +134,8 @@ void F1(){}  // No parameter & No return value
 void F2(int a){}  // With parameter & No return value
 int F3(){} // No parameter & with return value
 int F4(int a){} // With parameter & with return value
+
+
 
 void Function(int a,int b); //Function prototype or declaration // int a,int b are parameters 
 
@@ -87,9 +148,10 @@ int main(int n,char *Argc[]) //Arguments in main function is Command-line argume
 	Function(5,4);  
 	//Calling Function //5,4 are arguments
 	FunctionPointer(Function);  //Function Pointer as Argument
+	Array2D();
 }
 
-void Function(int a,int b) //Function definition = Function Declaration + Statementss
+void Function(int a,int b) //Function definition = Function Declaration + Statements
 {
 	a=a+b;
 }
