@@ -1,6 +1,8 @@
 #include<stdio.h> 
 #include<stdlib.h>
 
+//Function name is a pointer
+
 //Pass by refference - Passing the address of a variable
 void PassRef(int *a)
 {
@@ -45,7 +47,14 @@ int* LocalAddress()
 
 
 
-int main()
+//Function can not return more than one variable
+void F1(){}  // No arguments & No return value
+void F2(int a){}  // With arguments & No return value
+int F3(){} // No arguments & with return value
+int F4(int a){} // With argumnts & with return value
+
+
+int main(int n,char *Argc[]) //Arguments in main function is Command-line argument //We can pass values to main function using command-line
 {
 	// int* dihan=Dihan();
 	// printf("%d",*Dihan());
