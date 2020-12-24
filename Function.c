@@ -81,12 +81,10 @@ void Function(int a,int b); //Function protottype or declaration // int a,int b 
 
 int main(int n,char *Argc[]) //Arguments in main function is Command-line argument //We can pass values to main function using command-line
 {
-	// int* dihan=Dihan();
-	// printf("%d",*Dihan());
 	Function(5,4); //Calling Function //5,4 are arguments
 }
 
-void Function(int a,int b) //Function definition
+void Function(int a,int b) //Function definition = Function Declaration + Statementss
 {
 	a=a+b;
 }
