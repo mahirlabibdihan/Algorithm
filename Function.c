@@ -5,7 +5,7 @@
 
 
 
-//Pass by refference - Passing the address of a variable
+//Pass by refference - Passing the address of a variable --- [ Array always pass by refference ] 
 void PassRef(int *b)
 {
 	//b -> Address of b
