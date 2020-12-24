@@ -69,14 +69,24 @@ int* LocalAddress()
 
 
 //Function can not return more than one variable
-void F1(){}  // No arguments & No return value
-void F2(int a){}  // With arguments & No return value
-int F3(){} // No arguments & with return value
-int F4(int a){} // With argumnts & with return value
+void F1(){}  // No parameter & No return value
+void F2(int a){}  // With parameter & No return value
+int F3(){} // No parameter & with return value
+int F4(int a){} // With parameter & with return value
 
+
+
+
+void Function(int a,int b); //Function protottype or declaration // int a,int b are parameters 
 
 int main(int n,char *Argc[]) //Arguments in main function is Command-line argument //We can pass values to main function using command-line
 {
 	// int* dihan=Dihan();
 	// printf("%d",*Dihan());
+	Function(5,4); //Calling Function //5,4 are arguments
+}
+
+void Function(int a,int b) //Function definition
+{
+	a=a+b;
 }
