@@ -72,13 +72,18 @@ void Dihan()
 
 
 
-//Can not return the address of local variable of a function unless it is allocated by malloc. Because the allocated memory is automatically free at the end of function execution. But in malloc the memory needs to be free manually.
+//Can not return the address of local variable of a function unless it is Static Variable or allocated by malloc.
+ // Because the allocated memory is automatically free at the end of function execution. But in malloc the memory needs to be free manually.
 int* LocalAddress()
 {
 	int *a=(int*)malloc(sizeof(int));
 	return a;
 }//Correct
-
+int* StaticAddress()
+{
+	static int a;
+	return &a;
+}//Correct
 // int* LocalAddress()
 // {
 // 	int a;
