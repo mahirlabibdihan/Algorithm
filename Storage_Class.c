@@ -10,6 +10,13 @@
 #include<stdio.h>
 //Storage class of global variable is External.
 int a;  //External storage class //don't need to write extern int a . It will give compile error.
+int F()
+{
+	static int d; //static variable will be created only once in a program. No matter how many times it is been declared.
+	d++;
+	return d;
+
+}
 int main()
 {
 	int a;  //default storage class of local variable is Automatic.
@@ -17,6 +24,7 @@ int main()
 	register int c;
 	// Register storage class is same as Automatic Storage class. But it takes less time in code execution compared to Automatic.
 	// But we can not declare all varible as Register variables. Because size of register is small . 
-	static int d;
-	printf("%d",d);
+	printf("%d\n",F());
+	printf("%d\n",F());
+
 }
