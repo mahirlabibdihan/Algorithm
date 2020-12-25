@@ -148,6 +148,8 @@ void FunctionPointer(void (*Function)(int,int)) //Function Pointer as Parameter
 {
 }
 
+
+//main() can return void/int in c program. But it must return int in c++ program.
 int main(int n,char *Argc[]) //Arguments in main function is Command-line argument //We can pass values to main function using command-line
 {
 	Function(5,4);  
