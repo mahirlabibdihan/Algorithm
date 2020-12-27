@@ -5,9 +5,11 @@
 
 
 // == not possible
+// structure follows scope rules
 
 /*############################################################### T Y P E     O F     S T R U C T U R E      D E C L A R A T I O N S ################################################################*/
-
+	
+	struct SN1; //forward declaration
 	// 1 .  Declaring a structure whose name is SN1
 	struct SN1
 	{
@@ -189,13 +191,16 @@ struct Point
 
 void AssignStructure()
 {	
-	struct Point *S;    // Structure Pointer
-	(*S).a=10;
-	S->a=10;  // Both are same
-
 	struct Point P;  
 	P.a=10;
 	P.x->a=10; // For Nested structure
+
+	struct Point *S=&P;    // Structure Pointer 
+	(*S).a=10;
+	S->a=10;  // Both are same
+	// printf("%d \n",S->a);
+
+	
 }
 
 
@@ -220,13 +225,42 @@ struct BitField{
 }Bit;
 
 
+
+// Flexible Array Member
+struct Flex
+{
+	int Roll;
+	char Name[];   // flexible array member // need another variable in the structure to declare flexible array // It must be the last element within thr structure
+};
+
+struct Flex* Create(struct Flex *s,int Roll,char Name[])
+{
+	s=(struct Flex*)malloc(sizeof(*s)+sizeof(char)*(strlen(Name)+1));
+	s->Roll=Roll;
+	strcpy(s->Name,Name);
+	return s;
+}
+
+void FAM()
+{
+	struct Flex *s=Create(s,10,"Dihan");
+	// printf("%s\n",s->Name);
+	struct Flex *r=(struct Flex*)malloc(sizeof(*s)+sizeof(int)*10);
+}
+
+
+
+
+
 int main()
 {	
 
 	// scanf("%u",&Bit.a); // Incorrect
 	Bit.a=10;
-	printf("%u\n",Bit.a);
+	// printf("%u\n",Bit.a);
+	printf("%d\n",sizeof(struct Flex));
 
+	FAM();
 	AssignStructure();
 	ArrayPass();
 }
