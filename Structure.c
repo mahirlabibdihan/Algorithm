@@ -101,7 +101,7 @@
 	// 8 bytes
 	// _____ _____ _____ _____
 	//|     |     |     |     |
-	//|	 a  |  b  |	    |     |
+	//|  a  |  b  |     |     |
 	//|_____|_____|_____|_____|
 	//|                       |
 	//|           c           |
@@ -118,7 +118,7 @@
 	//|           a           |
 	//|_____ _____ ___________|
 	//|     |     |           |
-	//|	 b  |     |	    c     |
+	//|  b  |     |     c     |
 	//|_____|_____|___________|
 
 // For Details : "https://www.geeksforgeeks.org/is-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member/"
