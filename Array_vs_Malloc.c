@@ -21,10 +21,10 @@ int main()
 
 
 
+	//2D array
+
 	int c[10][10];//c==c[0]&&c[0]==&c[0][0]
 	int (*e)[10]=c;
-
-
 
 
 	int** d=(int**)malloc(sizeof(int*)*10);
@@ -32,12 +32,25 @@ int main()
 	int** f=d;
 
 
+/**********************************************************/
+	int (*m)[10]=(int(*)[])malloc(sizeof(int)*10*10);       //More like normal 2d array
+	m[0][1]=10;
+	// printf("%d %d %d %d\n",&d[0][9],&d[1][0],&m[0][9],&m[1][0]);
+/**********************************************************/
+
+
+
+
 	F1(10,c);
+	F1(10,m);
 	F2(d);
 
 
 
-	long long n;scanf("%lld",&n);
+
+
+	long long n=10;
+	// scanf("%lld",&n);
 	int g[n];  // No chance of error handling for negative or large size.
 
 	int *h=(int*)malloc(sizeof(int)*n);

@@ -258,7 +258,7 @@ int main()
 	// scanf("%u",&Bit.a); // Incorrect
 	Bit.a=10;
 	// printf("%u\n",Bit.a);
-	printf("%d\n",sizeof(struct Flex));
+	printf("%d\n",sizeof(struct Flex)); 
 
 	FAM();
 	AssignStructure();
