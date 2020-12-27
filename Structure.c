@@ -6,6 +6,7 @@
 
 // == not possible
 // structure follows scope rules
+// structure elements can't be initialized in c
 
 /*############################################################### T Y P E     O F     S T R U C T U R E      D E C L A R A T I O N S ################################################################*/
 	
@@ -24,7 +25,7 @@
 	}SV1;
 
 
-	// 3 .  Declaring a structure whose name is SN3 and a struct variable whose name is SV2 and Initializing SV1 . 
+	// 3 .  Declaring a structure whose name is SN3 and a struct variable whose name is SV2 and Initializing SV1 .
 	struct SN3
 	{
 	  int x,y;

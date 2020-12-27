@@ -5,7 +5,7 @@
 // #define alias original
 // typedef -> Follow scope rules.
 // #define -> Doesn't follow scope rules.Works globally.
-void f()
+void f(int a, int b)
 {
 	// typedef long long ll;
 	// #define ll long long 
@@ -21,6 +21,12 @@ void f()
 typedef char* ptr;
 #define PTR char*
 
+
+typedef int *myint;
+#define MYINT int*
+
+typedef void (*Ptr_Func)(int a , int b ); 
+typedef int (*Ptr_2D)[10];
 int main()
 {
  	// scanf("%*c");
@@ -29,6 +35,15 @@ int main()
 	// printf("%d %d %d \n",sizeof a,sizeof b,sizeof c);
 	// printf("%d %d %d \n",sizeof A,sizeof B,sizeof C);
 	
+	myint i; // int*
+
+	int Array2D[10][10];
+
+	Ptr_2D P=Array2D;
+	Ptr_Func  F=f;
+
+
+	// MYINT I;
 
 
 	printf("Size of Short: %d\n",sizeof(short));

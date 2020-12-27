@@ -9,7 +9,7 @@
 
 #include<stdio.h>
 //Storage class of global variable is External.
-int a;  //External storage class //don't need to write extern int a . It will give compile error.
+extern int a;  //External storage class
 int F()
 {
 	static int d; //static variable will be created only once in a program. No matter how many times it is been declared.

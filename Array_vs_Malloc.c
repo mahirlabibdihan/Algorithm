@@ -9,6 +9,8 @@ void F2(int** y) // Applicable in C++
 {
 
 }
+
+typedef int (*Pointer)[10];
 int main()
 {
 	int a[10];//a==&a[0]
@@ -25,6 +27,8 @@ int main()
 
 	int c[10][10];//c==c[0]&&c[0]==&c[0][0]
 	int (*e)[10]=c;
+	Pointer P=c;
+
 
 
 	int** d=(int**)malloc(sizeof(int*)*10);
