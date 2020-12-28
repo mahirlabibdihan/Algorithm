@@ -5,6 +5,11 @@
 
 
 #define abs(x)  ( x>=0 ? x : -x ) 
+/******Redefining Macro*******/
+#define MAX 1000
+#undef MAX
+#define MAX 100
+/****************************/
 
 int main()
 {
@@ -14,5 +19,5 @@ int main()
 	// printf("%s %s %d %s",__DATE__,__TIME__,__LINE__,__FILE__);
 
 
-	printf("%d",abs(10-13));
+	printf("%d",MAX);
 }  

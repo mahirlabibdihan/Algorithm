@@ -69,11 +69,10 @@ int main()
 
     /**************Changing the value of constant variable*************/
     const int C=10;
-    int * const P=&C;
+    int * P=(int*) &C;
     *P=8;
-    int x;
-    p=&x;
     printf("%u\n",C); 
+
 }
 
 
