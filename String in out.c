@@ -65,11 +65,11 @@
 
   for(i=0;i<n;i++)
      gets(x[i]);
-      scanf("%[^\n]",x[i]);
+    // scanf("%[^\n]\n",x[i]);
 
 
   for(i=0;i<n;i++)
-  printf("%s\n",x[i]);||puts(x[i]);
+  printf("%s\n",x[i]);//puts(x[i]);
 
 }
 
