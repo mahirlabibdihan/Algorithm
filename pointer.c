@@ -59,11 +59,19 @@ int main()
 
     //short r=p;
     q=&p;
-    printf("%d %d",sizeof p,sizeof q);
+    printf("%d %d\n",sizeof p,sizeof q);
 
     // int *ptr[5]; // Array of 5 integer pointer
     // int *(ptr[5]); // Array of 5 integer pointer
     // int (*ptr)[5]; //Pointer to an array of 5 integer
+
+
+
+    /**************Changing the value of constant variable*************/
+    const int C=10;
+    int *P=(int*)&C;
+    *P=8;
+    printf("%u\n",C); 
 }
 
 

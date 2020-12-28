@@ -9,6 +9,7 @@ int rand(); // Generates Random numbers in the range [0,RAND_MAX]---[ RAND_MAX =
 // The initial number from which the generator starts (but does not produce) is called the seed of the generator. 
 // The initial value of the seed is always 1 unless we change it . Thus we always get the same sequence of numbers .
 
+
 void srand(unsigned int); //  Changes the seed // Takes an unsigned integer value to be used as seed by the pseudo-random number generator algorithm .
 int main()
 {
