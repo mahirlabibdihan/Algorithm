@@ -1,4 +1,4 @@
-
+#include<stdio.h>
 int main()
 {
 //    int n,*a,i;
@@ -69,8 +69,10 @@ int main()
 
     /**************Changing the value of constant variable*************/
     const int C=10;
-    int *P=(int*)&C;
+    int * const P=&C;
     *P=8;
+    int x;
+    p=&x;
     printf("%u\n",C); 
 }
 

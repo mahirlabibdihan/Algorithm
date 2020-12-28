@@ -1,7 +1,7 @@
 #include<stdio.h>
 // void as the return type of function means the function doesn,t return any value .
 // void as the function parameter means the function doesn't take any argument
-// void* is a universal pointer
+// void* is a universal pointer // Can also point to funtion , structure .
  
 int main()
 {
