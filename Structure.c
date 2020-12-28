@@ -110,6 +110,8 @@
 	//|           c           |
 	//|_______________________|
 
+
+	/***Struct elements can only be stored on the nth byte . Where n is the multiple of the size of the element .***/
 	typedef struct{
 		int a;
 		char b;
@@ -123,6 +125,24 @@
 	//|     |     |           |
 	//|  b  |     |     c     |
 	//|_____|_____|___________|
+
+	typedef struct{
+		int a;
+		char b;
+		short c;
+		char d;
+	}S5;
+	//12 bytes
+	// _______________________
+	//|                       |
+	//|           a           |
+	//|_____ _____ ___________|
+	//|     |     |           |
+	//|  b  |     |     c     |
+	//|_____|_____|_____ _____|
+	//|     |     |     |     |
+	//|  d  |     |	    |     |
+	//|_____|_____|_____|_____|
 
 // For Details : "https://www.geeksforgeeks.org/is-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member/"
 /*#############################################################################################################*/
@@ -264,7 +284,15 @@ int main()
 	FAM();
 	AssignStructure();
 	ArrayPass();
+
+	strcpy(Student.Name,"Dihan");
+	Student.Position=10;
+	printf("%u",Student);
 }
+
+//&Student.Name[0] , &Student ,Student--> 4202560
+
+//Student --> 4294953984
 
 
 // typedef struct{

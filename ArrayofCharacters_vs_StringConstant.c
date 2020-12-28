@@ -1,4 +1,6 @@
 #include<stdio.h> 
+char p[6]="Dihan"; // Stores the elements of "Dihan" to p array .
+char *q = "Dihan"; // Stores the address of "Dihan" to q pointer .
 int main()
 {
 	char a[6]={'D','i','h','a','n','\0'}; // Extra space is needed to store the null character // a[6] instead of a[5]
