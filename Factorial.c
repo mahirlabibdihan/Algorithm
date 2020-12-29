@@ -1,19 +1,28 @@
 
-int fact(int n){if(!n) return 1;return n*fact(n-1);}
-
-int fact(int n)
+int Recursive_Factorial(int n)
 {
-    int i,c=1;
+  if(!n) return 1;
+  return n*fact(n-1);
 
-    f(i,2,n+1) c*=i;
+  // return n?b*fact(n-1):1;
+}
 
-    return c;
+int Factorial(int n)
+{
+    int i,fact=1;
 
+    for(i=2;i<=n;i++)
+    {
+       fact*=i;
+    }
+
+    // for(i=2;i<=n;fact*=i++);
+    return fact;
 }
 
 
-vll x(MAX);
 
+int x[1<<31];
 void fact()
 {
   x[0]=x[1]=1;
@@ -24,7 +33,7 @@ void fact()
 
 
 
-void multiply(vll &x,int a)
+void multiply(int *x,int a)
 {
     int c=0,b;
 
@@ -43,10 +52,15 @@ void multiply(vll &x,int a)
 }
 void fact(int n)
 {
-   vll x;
+   int x;
    x.pb(1);
 
    f(i,2,n+1) multiply(x,i);
 
    rf(i,x.sz-1,-1) x[i];
+}
+
+int main()
+{
+
 }
