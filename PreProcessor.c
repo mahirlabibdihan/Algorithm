@@ -1,9 +1,5 @@
 #include<stdio.h>
 #define X 0.8
-#define print_dec(var)  printf("%s=%d\n",#var,var);
-
-
-
 #define abs(x)  ( x>=0 ? x : -x ) 
 /******Redefining Macro*******/
 #define MAX 1000
@@ -11,8 +7,16 @@
 #define MAX 100
 /****************************/
 
+
+
+
+#define print_dec(var)  printf(#var"=%d\n",var);
 int main()
 {
+	int a=10;
+	print_dec(a);
+
+	
 	// int counter=5;
 	// print_dec(counter);
 	
