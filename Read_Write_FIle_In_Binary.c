@@ -8,7 +8,7 @@ int main()
 
 	In=fopen("Binary.txt","wb");
 
-	fwrite(&Array,sizeof(Array[0]),10,In);
+	fwrite(Array,sizeof(Array[0]),10,In);
 
 	fclose(In);
 
@@ -19,7 +19,7 @@ int main()
 	int i;
 	// for(i=0;i<10;i++)
 	{
-		fread(&Array2,sizeof(4*10),1,Out);
+		fread(Array2,sizeof(4),10,Out);
 	}
 	
 	for(i=0;i<10;i++)
