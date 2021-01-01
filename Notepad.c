@@ -37,6 +37,7 @@ int main()
 				}	
 				else
 				{
+					FileSize--;
 					Column=0,Row=0;
 				}
 			}
@@ -53,6 +54,7 @@ int main()
 					char Input;
 					printf("Character : ");
 					scanf("\n%c",&Input);
+					FileSize++;
 					Data[Length++]=Input;
 					Data[Length++]=C;
 					CursorColumn++;

@@ -1,9 +1,7 @@
 #include <stdio.h> 
-
-#include<stdio.h>
 int main()
 {
-	FILE* Ptr=fopen("Data.txt","r");
+	FILE* Ptr=fopen("a.exe","r");
 
 	while(1)
 	{
