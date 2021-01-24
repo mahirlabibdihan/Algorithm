@@ -10,14 +10,7 @@ typedef struct Vector{
 
 void push_back(vector *A,int a)
 {
-	if(A->Size)
-	{
-		A->Arr=(int*)realloc(A->Arr,sizeof(int)*(A->Size+1));
-	}
-  	else
-  	{
-  		A->Arr=(int*)malloc(sizeof(int));
-  	}
+	A->Arr=(int*)realloc(A->Arr,sizeof(int)*(A->Size+1));
   	A->Arr[A->Size]=a;
   	A->Size++;
 }

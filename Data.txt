@@ -1,7 +1,0 @@
-Hello .
-I am Mahir Labib Dihan .
-I studies at Bangladesh University of Science and Technology .
-Begginer at programming .
-I love programming .
-Learning languages .
-Bye .

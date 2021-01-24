@@ -1,3 +1,13 @@
+/*
+ ______   _________ _      _       _
+|  ____ \|___   ___| |    | |     | |
+| |    \ \   | |   | |____| |     | |
+| |    | |   | |   |  ____  |     | |
+| |____/ /___| |___| |    | |_____| |
+|_______/|_________|_|    |_________|
+M A H I R     L A B I B     D I H A N
+
+*/
 #include<stdio.h>
 #define sort(a,...) Bubble_Sort(a,sizeof(a)/sizeof(a[0]),(NULL,##__VA_ARGS__))
 #define swap(Type,a,b) {Type c=a;a=b;b=c;}

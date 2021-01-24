@@ -1,8 +1,18 @@
+/*
+ ______   _________ _      _       _
+|  ____ \|___   ___| |    | |     | |
+| |    \ \   | |   | |____| |     | |
+| |    | |   | |   |  ____  |     | |
+| |____/ /___| |___| |    | |_____| |
+|_______/|_________|_|    |_________|
+M A H I R     L A B I B     D I H A N
+
+*/
 #include <stdio.h> 
 int main()
 {
-	FILE* Ptr=fopen("a.exe","rb");
-	FILE* Out=fopen("decompile.txt","w");
+	FILE* Ptr=fopen("Takla.o","r");
+	// FILE* Out=fopen("decompile.txt","w");
 	fseek(Ptr,0,SEEK_END);
 	long n=ftell(Ptr);
 	int i;
@@ -15,15 +25,15 @@ int main()
 		{
 			fputc(c,Out);
 		}
-		// else if(c=='\n'||c==' '||c=='<'||c=='>'||c=='*'||c=='%')
-		// {
-		// 	fputc(c,Out);
-		// }
-		else
+		else if(c=='\n'||c==' '||c=='<'||c=='>'||c=='*'||c=='%')
 		{
 			fputc(c,Out);
 		}
+		else
+		{
+			fputc('.',Out);
+		}
 	};
-	fclose(Out);
+	// fclose(Out);
 	fclose(Ptr);
 }
