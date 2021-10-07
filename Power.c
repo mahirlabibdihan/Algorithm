@@ -45,7 +45,6 @@ pair<double,double> Fraction(double s)
 	{	
 		WholeNum*=10;
 		DecNum*=10;
-
 	}
 
 	string temp = WholeNum;

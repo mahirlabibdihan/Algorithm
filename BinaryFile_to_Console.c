@@ -11,8 +11,8 @@ M A H I R     L A B I B     D I H A N
 #include <stdio.h> 
 int main()
 {
-	FILE* Ptr=fopen("Takla.o","r");
-	// FILE* Out=fopen("decompile.txt","w");
+	FILE* Ptr=fopen("Resume.txt","r");
+	FILE* Out=fopen("decompile.txt","w");
 	fseek(Ptr,0,SEEK_END);
 	long n=ftell(Ptr);
 	int i;

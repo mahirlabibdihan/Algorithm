@@ -7,15 +7,6 @@ int Recursive_isPrime(int n,int i)
     else return 0;
 }
 
-int isPrime(int n)
-{
-	int i;
-	for(i=2;i*i<=n;i++)
-	{
-		if(n%i==0) return 0;
-	}
-	return 1;
-}
 
 int Prime(int n)      // Fastest
 {
@@ -30,8 +21,29 @@ int Prime(int n)      // Fastest
 	}
 	return 1;
 }  
+
+
+#include<stdio.h> 
+int isPrime(int n)
+{
+	int i;
+	if(n<2) return 0;
+	for(i=2;i*i<=n;i++)
+	{
+		if(n%i==0) return 0;
+	}
+	return 1;
+}
+int nth_Prime(int n){
+	int i=0,count=0;
+	while(count != n)
+	{
+		i++;
+		if(isPrime(i)) count++;
+	}
+	return i;
+}
 int main()
 {
-	int n;
-	printf("%d %d\n",isPrime(n),Recursive_isPrime(n,2));
+	printf("%d",nth_Prime(25));
 }
