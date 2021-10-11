@@ -114,7 +114,3 @@ int main()
     Print_Fibonacci(n);
     printf("%d\n",Sum_Fibonacci(n));
 }
-
-
-
-
