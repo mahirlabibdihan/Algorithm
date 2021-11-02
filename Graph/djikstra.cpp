@@ -35,7 +35,6 @@ public:
 
     void djikstra(int a)
     {
-
         priority_queue<pll> q;
 
         dist[a] = 0; q.push({dist[a], a});
@@ -53,7 +52,6 @@ public:
                     q.push({ -dist[v], v});
                 }
             }
-
         }
     }
 

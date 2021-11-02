@@ -1,3 +1,4 @@
+// Merge Sort - O(nlogn)
 void merge(int arr[], int left, int mid, int right)
 {
    int i = left, j = mid + 1, k = 0, tmp[right - left + 1];
