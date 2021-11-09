@@ -2,6 +2,7 @@
 
 int maxSum(int arr[], int n, int k)
 {
+   
     // k must be greater
     if(k<n)
     {
