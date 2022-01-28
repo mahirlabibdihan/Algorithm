@@ -70,19 +70,23 @@ int binarySearch2(int arr[], int n, int k)
                 right = mid - 1;
             }
         }
-        else return mid;
+        else
+            return mid;
     }
     return -1;
 }
 
-int recursiveBinarySearch(int arr[], int left,int right, int k)
+int recursiveBinarySearch(int arr[], int left, int right, int k)
 {
     if (left <= right)
     {
         int mid = (left + right) / 2;
-        if (k > arr[mid]) recursiveBinarySearch(arr,mid + 1,right,k);
-        else if (arr[mid] > k) recursiveBinarySearch(arr,left,mid - 1,k);
-        else return mid;
+        if (k > arr[mid])
+            recursiveBinarySearch(arr, mid + 1, right, k);
+        else if (arr[mid] > k)
+            recursiveBinarySearch(arr, left, mid - 1, k);
+        else
+            return mid;
     }
     return -1;
 }
@@ -94,11 +98,34 @@ int binarySearch(int arr[], int n, int k)
     while (left <= right)
     {
         int mid = (left + right) / 2;
-        if (k > arr[mid]) left = mid + 1;
-        else if (arr[mid] > k) right = mid - 1;
-        else return mid;
+        if (k > arr[mid])
+            left = mid + 1;
+        else if (arr[mid] > k)
+            right = mid - 1;
+        else
+            return mid;
     }
     return -1;
+}
+
+// Return the position of an element in sorted array "A" of
+// size "n" with value "K". If "K" is not in "A", return
+// the value "n".
+int binary(int A[], int n, int K)
+{
+    int l = -1;
+    int r = n; // l and r are beyond array bounds
+    while (l + 1 != r)
+    {                        // Stop when l and r meet
+        int m = (l + r) / 2; // Check middle of remaining subarray
+        if (K > A[m])
+            l = m; // In right half
+        else if (K < A[m])
+            r = m; // In left half
+        else
+            return m; // Found it
+    }
+    return n; // Search value not in A
 }
 
 // First element >= k
@@ -108,11 +135,13 @@ int lowerBound(int arr[], int n, int k)
     while (left < right)
     {
         int mid = (left + right) / 2;
-        if (k > arr[mid]) left = mid + 1;
-        else right = mid-1;
+        if (k > arr[mid])
+            left = mid + 1;
+        else
+            right = mid - 1;
     }
 
-    if(left<n && arr[left]<k)
+    if (left < n && arr[left] < k)
     {
         left++;
     }
@@ -121,28 +150,29 @@ int lowerBound(int arr[], int n, int k)
 
 // First element > k
 int upperBound(int arr[], int n, int k)
-{  
+{
     int left = 0, right = n;
     while (left < right)
     {
         int mid = (left + right) / 2;
-        if (k >= arr[mid]) left = mid + 1; 
-        else right = mid-1;
+        if (k >= arr[mid])
+            left = mid + 1;
+        else
+            right = mid - 1;
     }
 
-    if(left<n && arr[left]<=k)
+    if (left < n && arr[left] <= k)
     {
         left++;
     }
     return left;
 }
 
-#include<stdio.h>
+#include <stdio.h>
 int main()
 {
-    int arr[] = { 1, 2, 2 , 2, 5, 5 };
+    int arr[] = {1, 2, 2, 2, 5, 5};
     int n = sizeof(arr) / sizeof(arr[0]);
-
 
     printf("%d ", upperBound(arr, n, 2));
 

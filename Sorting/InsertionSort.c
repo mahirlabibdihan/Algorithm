@@ -15,6 +15,7 @@ void insertionSort1(int arr[], int n)
             arr[j + 1] = arr[j];
             j = j - 1;
         }
+        // Inserting key into sorted array
         arr[j + 1] = key;
     }
 }

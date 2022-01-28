@@ -1,0 +1,8 @@
+1 < logn < sqrt(n) < n < nlogn < n^2 < n^3 < ... < 2^n < 3^n < n^n 
+
+O(logn!) = O(log(1)+log(2)+...+log(n))
+O(nlogn) = O(log(n)+log(n)+...+log(n))
+O(logn!) < O(nlogn)
+
+Big-O       = f(n)<=c.g(n) -> f(n)=O(g(n))
+Big-Omega   = f(n)>=c.g(n) -> f(n)=Ω(g(n))

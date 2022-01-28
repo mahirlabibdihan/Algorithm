@@ -2,34 +2,29 @@
 
 int maxSum(int arr[], int n, int k)
 {
-   
-    // k must be greater
-    if(k<n)
-    {
+   // k must be greater
+   if (k < n)
+   {
       return INT_MIN;
-    }
- 
-    int maxSum = 0;
-    for (int i=0; i<k; i++)
-    {
-       maxSum += arr[i];
-    }
+   }
+   int maxSum = 0;
+   for (int i = 0; i < k; i++)
+   {
+      maxSum += arr[i];
+   }
 
-    int sum = maxSum;
-    for (int i=k; i<n; i++)
-    {
-       sum += arr[i] - arr[i-k];
+   int sum = maxSum;
+   for (int i = k; i < n; i++)
+   {
+      sum += arr[i] - arr[i - k];
 
-       if(maxSum<sum)
-       {
-       		maxSum = sum;
-       }    
-    }
- 
-    return maxSum;
+      if (maxSum < sum)
+      {
+         maxSum = sum;
+      }
+   }
+   return maxSum;
 }
-
 int main()
 {
-
 }

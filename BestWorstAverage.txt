@@ -1,0 +1,8 @@
+1. Linear Search - O(n)
+Best,B(n): Searching element is at first index - c
+Worst,W(n): Searching element is at last index - cn
+Average,A(n): All possible case time / no of cases - c(n+1)/2
+2. Binary Search Tree - O(logn)
+B(n): Search root element - c
+W(n): Search leaf element - time depends on height of tree - clogn <= W(n) <= cn
+A(n): clog(n!)/n <= A(n) <= c(n+1)/2

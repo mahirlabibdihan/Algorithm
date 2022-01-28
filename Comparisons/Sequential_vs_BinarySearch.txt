@@ -1,0 +1,13 @@
+1. Sequential Search - O(n)
+Best,B(n): Searching element is at first index - c
+Worst,W(n): Searching element is at last index - cn
+Average,A(n): All possible case time / no of cases - c(n+1)/2
+- if millions of searches are done ( n + n + n + .... )
+- if new data needs to be inserted ( n + n + n + .... )
+2. Binary Search Tree - O(logn)
+B(n): Search middle element - c
+W(n): Search left/right most element - c(ceil(log(n + 1))) [ ceil(log(n + 1)) elements are examined in the worst case ]
+A(n): 
+- if millions of searches are done ( nlogn(sort) + logn + logn + .....
+ )
+- if new data needs to be inserted ( nlogn(sort) + n(insert) + logn(search) + n + logn + ..... )
