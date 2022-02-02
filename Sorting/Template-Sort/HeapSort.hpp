@@ -1,5 +1,7 @@
 #ifndef __HEAP_SORT__
 #define __HEAP_SORT__
+// Increasing sort - Max heap
+// Decreasing sort - Min heap
 namespace Heap
 {
     template <typename E, typename Comp>

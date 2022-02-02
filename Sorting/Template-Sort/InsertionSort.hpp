@@ -1,5 +1,7 @@
 #ifndef __INSERTION_SORT__
 #define __INSERTION_SORT__
+// Best case: Already sorted array
+// Worst case: Reverse sorted array
 namespace Insertion
 {
     /*

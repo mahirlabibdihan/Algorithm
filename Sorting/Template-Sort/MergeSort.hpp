@@ -34,9 +34,19 @@ namespace Merge
             return; // List of one/zero element
         }
         E mid = begin + (end - begin) / 2;
+        for (E i = begin; i < end; i++)
+        {
+            cout << *i << " ";
+        }
+        cout << endl;
         divide<E, Comp>(begin, mid);
         divide<E, Comp>(mid, end);
         merge<E, Comp>(begin, mid, end);
+        for (E i = begin; i < end; i++)
+        {
+            cout << *i << " ";
+        }
+        cout << endl;
     }
     /*
     Merge Sort
