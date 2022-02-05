@@ -46,6 +46,23 @@ void deleteDP(int **dp, int n)
 // DnC O(2^n)
 namespace A
 {
+    // Bottom up
+    /*int knapsack(vector<Item> items, int pos, int n, int W)
+    {
+        if (pos == n || W == 0)
+        {
+            return 0;
+        }
+        else if (items[pos].weight > W)
+        {
+            return knapsack(items, pos + 1, n, W);
+        }
+        else
+        {
+            return max(items[pos].value + knapsack(items, pos + 1, n, W - items[pos].weight), knapsack(items, pos + 1, n, W));
+        }
+    }*/
+    // Top Down
     int knapsack(vector<Item> items, int n, int W)
     {
         if (n == 0 || W == 0)
@@ -131,6 +148,35 @@ namespace C
     }
 }
 
+namespace D
+{
+    int knapsack(vector<Item> items, int n, int W)
+    {
+        int **dp = createDP(n + 1, W + 1);
+        for (int i = 0; i <= n; i++)
+        {
+            for (int j = 0; j <= W; j++)
+            {
+                dp[i][j] = 0;
+            }
+        }
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j <= W; j++)
+            {
+                dp[i + 1][j] = max(dp[i + 1][j], dp[i][j]);
+                if (j + items[i].weight <= W)
+                {
+                    dp[i + 1][j + items[i].weight] = max(dp[i + 1][j + items[i].weight], items[i].value + dp[i][j]);
+                }
+            }
+        }
+        int value = dp[n][W];
+        deleteDP(dp, n + 1);
+        return value;
+    }
+};
+
 int main()
 {
     int n, weightLimit;
@@ -146,7 +192,7 @@ int main()
     start = clock();
     cout << B::knapsack(items, n, weightLimit) << " Time: " << clock() - start << endl;
     start = clock();
-    cout << C::knapsack(items, n, weightLimit) << " Time: " << clock() - start << endl;
+    cout << D::knapsack(items, n, weightLimit) << " Time: " << clock() - start << endl;
 }
 #endif
 /*
