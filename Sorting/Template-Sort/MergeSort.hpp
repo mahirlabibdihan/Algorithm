@@ -26,6 +26,7 @@ namespace Merge
             *i++ = *k++;
         }
     }
+    // Recursive way
     template <typename E, typename Comp>
     void divide(E begin, E end)
     {
@@ -34,19 +35,29 @@ namespace Merge
             return; // List of one/zero element
         }
         E mid = begin + (end - begin) / 2;
-        for (E i = begin; i < end; i++)
-        {
-            cout << *i << " ";
-        }
-        cout << endl;
         divide<E, Comp>(begin, mid);
         divide<E, Comp>(mid, end);
         merge<E, Comp>(begin, mid, end);
-        for (E i = begin; i < end; i++)
+    }
+    // Iterative way: Bottom up approach
+    template <typename E, typename Comp>
+    void msort(E begin, E end, Comp comp)
+    {
+        Merge::comp<Comp> = comp;
+        for (int curr_size = 1; curr_size <= end - begin; curr_size = 2 * curr_size)
         {
-            cout << *i << " ";
+            // for (E i = begin; i < end; i++)
+            // {
+            //     cout << *i << " ";
+            // }
+            // cout << endl;
+            for (E left = begin; left < end - 1; left += 2 * curr_size)
+            {
+                E mid = left + min(curr_size, end - left + 1);
+                E right = left + min(2 * curr_size, end - left + 1);
+                merge<E, Comp>(left, mid, right);
+            }
         }
-        cout << endl;
     }
     /*
     Merge Sort

@@ -12,7 +12,7 @@ Template function to get elapsed time of different sorting alogorithm.
 mainArray: Array that needs to be sorted.
 tempArray: Temporary array which will be passed to sorting function. So that the mainArray doesn't change.
 n: Size of the array
-mySort: Common function pointer for different sorting functions. 
+mySort: Common function pointer for different sorting functions.
 isSorted: If the array is already sorted.
 totalTest: Total number of tests to find the average.
 */
@@ -44,13 +44,13 @@ void solve(const int &n)
     {
         generateArray(mainArray, n);
         avg[0] += getSortTime(mainArray, tempArray, n, Merge::sort<int *, less<int>>);
-        avg[1] += getSortTime(mainArray, tempArray, n, Quick::sort<int *, less<int>>);
-        avg[2] += getSortTime(mainArray, tempArray, n, Quick::rsort<int *, less<int>>);
+        avg[1] += getSortTime(mainArray, tempArray, n, Merge::msort<int *, less<int>>);
+        // avg[2] += getSortTime(mainArray, tempArray, n, Quick::rsort<int *, less<int>>);
         // avg[3] += getSortTime(mainArray, tempArray, n, Insertion::sort<int *, less<int>>);
         // avg[4] += getSortTime(mainArray, tempArray, n, Quick::sort<int *, less<int>>, true);
         // avg[5] += getSortTime(mainArray, tempArray, n, Quick::rsort<int *, less<int>>, true);
-        avg[6] += getSortTime(mainArray, tempArray, n, std::sort<int *, less<int>>);
-        avg[7] += getSortTime(mainArray, tempArray, n, Intro::sort<int *, less<int>>);
+        // avg[6] += getSortTime(mainArray, tempArray, n, std::sort<int *, less<int>>);
+        // avg[7] += getSortTime(mainArray, tempArray, n, Intro::sort<int *, less<int>>);
     }
     cout << n;
     for (int i = 0; i < 8; i++)
@@ -64,15 +64,22 @@ int main()
 {
     // freopen("output.csv", "w", stdout);
     // srand(1905072);
-    // const int n[] = {5, 10, 100, 1000, 10000, 100000};
+    // const int n[] = {5, 10, 100, 1000, 10000, 100000, 500000};
     // cout << "Time,Merge Sort,Quicksort,Randomized Quicksort,Insertion Sort,Quicksort with sorted input,Randomized Quicksort with sorted input,STL sort() function,Intro Sort\n";
     // for (int j = 0; j < sizeof(n) / sizeof(n[0]); j++)
     // {
     //     solve(n[j]);
     // }
     // return 0;
-    int arr[] = {10, 30, 50, 70, 90, 100, 80, 60, 40, 20};
+    int arr[] = {45, 30, 90, 70, 60, 100, 80, 65};
     int n = sizeof(arr) / sizeof(arr[0]);
-    Quick::sort(arr, arr + n, less<int>(), Quick::MID_PIVOT);
+    // // Quick::sort(arr, arr + n, less<int>(), Quick::MID_PIVOT);
     // Merge::sort(arr, arr + n, less<int>());
+
+    Merge::msort(arr, arr + n, less<int>());
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }

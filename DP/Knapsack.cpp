@@ -121,7 +121,24 @@ namespace B
 // O(n*W)
 namespace C
 {
-    int knapsack(vector<Item> items, int n, int W)
+    vector<int> backtrack(vector<Item> items, int n, int W, int **dp)
+    {
+        vector<int> x(n);
+        for (int i = n, j = W; i > 0; i--)
+        {
+            if (j >= items[i - 1].weight && dp[i][j] == items[i - 1].value + dp[i - 1][j - items[i - 1].weight])
+            {
+                j -= items[i - 1].weight;
+                x[i - 1] = 1;
+            }
+            else
+            {
+                x[i - 1] = 0;
+            }
+        }
+        return x;
+    }
+    vector<int> knapsack(vector<Item> items, int n, int W)
     {
         int **dp = createDP(n + 1, W + 1);
         for (int i = 0; i <= n; i++)
@@ -142,9 +159,10 @@ namespace C
                 }
             }
         }
-        int value = dp[n][W];
+        // Backtrack
+        vector<int> x = backtrack(item, n, W, dp);
         deleteDP(dp, n + 1);
-        return value;
+        return x;
     }
 }
 
@@ -192,7 +210,7 @@ int main()
     start = clock();
     cout << B::knapsack(items, n, weightLimit) << " Time: " << clock() - start << endl;
     start = clock();
-    cout << D::knapsack(items, n, weightLimit) << " Time: " << clock() - start << endl;
+    // cout << C::knapsack(items, n, weightLimit) << " Time: " << clock() - start << endl;
 }
 #endif
 /*
@@ -221,4 +239,11 @@ int main()
 577243 264724
 466257 224916
 369261 169684
+*/
+/*
+4 5
+12 2
+10 1
+20 3
+15 2
 */
