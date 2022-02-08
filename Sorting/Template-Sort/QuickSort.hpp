@@ -56,18 +56,8 @@ namespace Quick
         {
             return; // Don’t sort 0 or 1 element
         }
-        for (E i = left; i <= right; i++)
-        {
-            cout << *i << " ";
-        }
-        cout << endl;
         // k will be the first position in the right subarray, where the pivot will be after partition
         E k = Quick::partition<E, Comp>(left, right);
-        for (E i = left; i <= right; i++)
-        {
-            cout << *i << " ";
-        }
-        cout << endl;
         divide<E, Comp>(left, k - 1);
         divide<E, Comp>(k + 1, right);
     }
