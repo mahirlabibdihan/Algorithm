@@ -3,14 +3,13 @@
 // using Merge Sort
 #include <iostream>
 using namespace std;
-
+typedef long long int64;
 /* This funt merges two sorted arrays
 and returns inversion count in the arrays.*/
-int merge(int arr[], int left, int mid,
-          int right)
+int64 merge(int arr[], int left, int mid, int right)
 {
     int i, j, k;
-    int invCount = 0;
+    int64 invCount = 0;
     int temp[right + 1];
     for (int i = left, j = mid, k = left; i < mid || j <= right; k++)
     {
@@ -40,11 +39,11 @@ A[i] > A[j].*/
 
     return invCount;
 }
-int divide(int arr[], int left, int right)
+int64 divide(int arr[], int left, int right)
 {
     if (right <= left)
         return 0;
-    int invCount = 0;
+    int64 invCount = 0;
     int mid = (right + left) / 2;
     invCount += divide(arr, left, mid);
     invCount += divide(arr, mid + 1, right);
@@ -52,7 +51,7 @@ int divide(int arr[], int left, int right)
     return invCount;
 }
 
-int mergeSort(int arr[], size_t array_size)
+int64 mergeSort(int arr[], size_t array_size)
 {
     return divide(arr, 0, array_size - 1);
 }
@@ -60,16 +59,18 @@ int mergeSort(int arr[], size_t array_size)
 // Driver code
 int main()
 {
-    int arr[] = {1, 20, 6, 4, 5};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int ans = mergeSort(arr, n);
-    cout << " Number of inversions are " << ans << endl;
-    for (int i = 0; i < n; i++)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        cout << arr[i] << " ";
+        int n;
+        cin >> n;
+        int arr[n];
+        for (int i = 0; i < n; i++)
+        {
+            cin >> arr[i];
+        }
+        cout << mergeSort(arr, n) << endl;
+        ;
     }
-    cout << endl;
-    return 0;
 }
-
-// This is code is contributed by rathbhupendra

@@ -25,6 +25,11 @@
     "vector": "cpp",
     "xhash": "cpp",
     "xstring": "cpp",
-    "xtree": "cpp"
+    "xtree": "cpp",
+    "chrono": "cpp",
+    "format": "cpp",
+    "forward_list": "cpp",
+    "initializer_list": "cpp",
+    "xutility": "cpp"
   }
 }

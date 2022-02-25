@@ -160,7 +160,15 @@ namespace C
             }
         }
         // Backtrack
-        vector<int> x = backtrack(item, n, W, dp);
+        for (int i = 0; i <= n; i++)
+        {
+            for (int j = 0; j <= W; j++)
+            {
+                cout << dp[i][j] << " ";
+            }
+            cout << endl;
+        }
+        vector<int> x = backtrack(items, n, W, dp);
         deleteDP(dp, n + 1);
         return x;
     }
@@ -190,6 +198,7 @@ namespace D
             }
         }
         int value = dp[n][W];
+
         deleteDP(dp, n + 1);
         return value;
     }
@@ -204,13 +213,18 @@ int main()
     {
         cin >> i.value >> i.weight;
     }
-    clock_t start;
-    start = clock();
-    cout << A::knapsack(items, n, weightLimit) << " Time: " << clock() - start << endl;
-    start = clock();
-    cout << B::knapsack(items, n, weightLimit) << " Time: " << clock() - start << endl;
-    start = clock();
-    // cout << C::knapsack(items, n, weightLimit) << " Time: " << clock() - start << endl;
+    // clock_t start;
+    // start = clock();
+    // cout << A::knapsack(items, n, weightLimit) << " Time: " << clock() - start << endl;
+    // start = clock();
+    // cout << B::knapsack(items, n, weightLimit) << " Time: " << clock() - start << endl;
+    // start = clock();
+    vector<int> result = C::knapsack(items, n, weightLimit);
+    for (int i : result)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
 }
 #endif
 /*

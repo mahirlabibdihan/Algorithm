@@ -76,7 +76,7 @@ int main()
     // // Quick::sort(arr, arr + n, less<int>(), Quick::MID_PIVOT);
     // Merge::sort(arr, arr + n, less<int>());
 
-    Merge::msort(arr, arr + n, less<int>());
+    Merge::sort(arr, arr + n, less<int>());
     for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";

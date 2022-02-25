@@ -1,0 +1,1 @@
+{"name":"Local: Hackerrank","url":"g:\\Github\\Algorithm\\Greedy\\Hackerrank.cpp","tests":[{"id":1644000617038,"input":"10 4\n2 5 3 6","output":"5"},{"id":1644001356240,"input":"4 3\n1 2 3","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"g:\\Github\\Algorithm\\Greedy\\Hackerrank.cpp","group":"local","local":true}

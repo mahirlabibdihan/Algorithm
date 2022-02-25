@@ -1,0 +1,1 @@
+{"name":"Local: ClosestPair","url":"g:\\Github\\Algorithm\\DivideAndConquer\\ClosestPair.cpp","tests":[{"id":1645710248736,"input":"5 \n0 0\n0 1\n100 45\n2 3\n9 9","output":"5 \n0 0\n0 1\n100 45\n2 3\n9 9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"g:\\Github\\Algorithm\\DivideAndConquer\\ClosestPair.cpp","group":"local","local":true}

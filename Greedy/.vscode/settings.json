@@ -1,6 +1,13 @@
 {
   "files.associations": {
     "vector": "cpp",
-    "xlocale": "cpp"
+    "xlocale": "cpp",
+    "algorithm": "cpp",
+    "deque": "cpp",
+    "initializer_list": "cpp",
+    "queue": "cpp",
+    "type_traits": "cpp",
+    "xstring": "cpp",
+    "xutility": "cpp"
   }
 }

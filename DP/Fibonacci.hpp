@@ -23,8 +23,8 @@ int fib(int n)
 So, here we are calling f(3),f(2) multiple times. If we stores the value of every previous recursive call the tree will look like.
                         f(5)
                f(4)      +      f(3)
-        f(3)    +   f(2)                
-    f(2) + f(1)                        
+        f(3)    +   f(2)
+    f(2) + f(1)
  f(1)+f(0)
 So, in this optimized tree we will have at most 2 same recursive calls. So, for Nth-fibonacci number the tree will contain at most 2n node.
 Time complexity: O(n)
@@ -76,12 +76,15 @@ int fib(int n)
     {
         return last;
     }
+    cout << last << " ";
     for (int i = 2; i <= n; i++)
     {
+        cout << current << " ";
         int temp = current;
         current += last;
         last = temp;
     }
+    cout << current << endl;
     return current;
 }
 
