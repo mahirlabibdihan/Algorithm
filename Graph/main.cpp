@@ -1,18 +1,20 @@
-#include "Graph/LGraph.hpp"
 #include "Prim.hpp"
+#include "Kruskal.hpp"
+#include <iostream>
 int main()
 {
     int n, m;
     cin >> n >> m;
-    Graph *G = new LGraph(n);
+    vector<vector<pair<int, int>>> adj(n);
     for (int i = 0; i < m; i++)
     {
         int u, v, w;
         cin >> u >> v >> w;
-        G->setEdge(u, v, w);
-        G->setEdge(v, u, w);
+        adj[u].push_back({v, w});
+        adj[v].push_back({u, w});
     }
-    Prim(G, new int[n], 0);
+    cout << Kruskal(adj) << endl;
+    cout << Prim(adj, 0) << endl;
 }
 /*
 9 12

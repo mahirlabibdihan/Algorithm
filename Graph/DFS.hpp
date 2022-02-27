@@ -1,14 +1,16 @@
-#include "Graph/Graph.hpp"
-
-void DFS(Graph *G, int v)
+#include <vector>
+using namespace std;
+void DFS(vector<vector<int>> &adj, int u)
 { // Depth first search
-    // PreVisit(G, v); // Take appropriate action
-    G->setMark(v, VISITED);
-    for (int w = G->first(v); w < G->n(); w = G->next(v, w))
+  // PreVisit(G, v); // Take appropriate action
+    int n = adj.size();
+    vector<bool> visited(n);
+    visited[u] = true;
+    for (int v : adj[u])
     {
-        if (G->getMark(w) == UNVISITED)
+        if (!visited[v])
         {
-            DFS(G, w);
+            DFS(adj, v);
         }
     }
     // PostVisit(G, v); // Take appropriate action

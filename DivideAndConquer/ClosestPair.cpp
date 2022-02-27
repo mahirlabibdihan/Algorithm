@@ -7,112 +7,103 @@
 using namespace std;
 struct Point
 {
-    long long x, y;
+    int x, y;
 };
-struct MIN_DIST
+bool compareX(const Point &p1, const Point &p2)
 {
-    Point i, j;
-    double d;
-};
-int compareX(const void *a, const void *b)
-{
-    Point *p1 = (Point *)a, *p2 = (Point *)b;
-    return (p1->x - p2->x);
+    return p1.x < p2.x;
 }
-int compareY(const void *a, const void *b)
+bool compareY(const Point &p1, const Point &p2)
 {
-    Point *p1 = (Point *)a, *p2 = (Point *)b;
-    return (p1->y - p2->y);
+    return p1.y < p2.y;
 }
-double dist(Point p1, Point p2)
+float dist(const Point &p1, const Point &p2)
 {
-    return sqrt((p1.x - p2.x) * (p1.x - p2.x) +
-                (p1.y - p2.y) * (p1.y - p2.y));
+    return sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
 }
-MIN_DIST bruteForce(Point P[], int n)
+// O(7n)
+float merge(vector<Point> &P, int start, int mid, int end, float d)
 {
-    double min = DBL_MAX;
-    Point l, r;
-    for (int i = 0; i < n; ++i)
-        for (int j = i + 1; j < n; ++j)
-            if (dist(P[i], P[j]) < min)
-            {
-                min = dist(P[i], P[j]);
-                l = P[i];
-                r = P[j];
-            }
-    return {l, r, min};
-}
-MIN_DIST stripClosest(Point strip[], int size, double d)
-{
-    double min = d; // Initialize the minimum distance as d
-    Point l, r;
-    qsort(strip, size, sizeof(Point), compareY);
-    for (int i = 0; i < size; ++i)
-        for (int j = i + 1; j < size && (strip[j].y - strip[i].y) < min; ++j)
-            if (dist(strip[i], strip[j]) < min)
-            {
-                min = dist(strip[i], strip[j]);
-                l = strip[i];
-                r = strip[j];
-            }
-
-    return {l, r, min};
-}
-MIN_DIST closestUtil(Point P[], int start, int end)
-{
-    int n = end - start;
-    if (n <= 3)
+    vector<Point> temp(end);
+    for (int i = start, j = mid, k = start; i < mid || j < end; k++)
     {
-        return bruteForce(P, n);
+        if (i == mid)
+        {
+            temp[k] = P[j++];
+        }
+        else if (j == end)
+        {
+            temp[k] = P[i++];
+        }
+        else if (P[i].y <= P[j].y)
+        {
+            temp[k] = P[i++];
+        }
+        else
+        {
+            temp[k] = P[j++];
+        }
+    }
+    for (int i = start; i < end; i++)
+    {
+        P[i] = temp[i];
+    }
+    vector<Point> strip;
+    for (int i = start; i < end; i++)
+    {
+        if (abs(P[i].x - P[mid].x) < d)
+        {
+            strip.push_back(P[i]);
+        }
+    }
+    float minDist = d; // Initialize the minimum distance as d
+    int n = strip.size();
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < min(i + 8, n); j++)
+        {
+            float ds = dist(strip[i], strip[j]);
+            if (ds < minDist)
+            {
+                minDist = ds;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+    return minDist;
+}
+// 0(7n)
+float divide(vector<Point> P, int start, int end)
+{
+    if (end - start <= 1)
+    {
+        return FLT_MAX;
     }
     int mid = (start + end) / 2;
-    Point midPoint = P[mid];
-    MIN_DIST dl = closestUtil(P, start, mid);
-    MIN_DIST dr = closestUtil(P, mid, end);
-    MIN_DIST d;
-    if (dl.d < dr.d)
-    {
-        d = dl;
-    }
-    else
-    {
-        d = dr;
-    }
-    Point strip[n];
-    int j = 0;
-    for (int i = start; i < end; i++)
-        if (abs(P[i].x - midPoint.x) < d.d)
-            strip[j] = P[i], j++;
-    MIN_DIST s = stripClosest(strip, j, d.d);
-    if (s.d < d.d)
-    {
-        return s;
-    }
-    else
-    {
-        return d;
-    }
+    float dl = divide(P, start, mid); // T(n/2)
+    float dr = divide(P, mid, end);   // T(n/2)
+    float d = min(dl, dr);
+    float dm = merge(P, start, mid, end, d); // O(n)
+    return dm;
 }
-MIN_DIST closest(Point P[], int n)
+float closest(vector<Point> P)
 {
-    qsort(P, n, sizeof(Point), compareX);
-    return closestUtil(P, 0, n);
+    sort(P.begin(), P.end(), compareX); // O(nlogn)
+    return divide(P, 0, P.size());      // O(nlogn)
 }
 int main()
 {
-    map<pair<int, int>, int> idx;
     int n;
     cin >> n;
-    Point p[n];
+    vector<Point> P(n);
     for (int i = 0; i < n; i++)
     {
-        cin >> p[i].x >> p[i].y;
-        idx[{p[i].x, p[i].y}] = i;
+        cin >> P[i].x >> P[i].y;
     }
-    MIN_DIST m = closest(p, n);
-    int a = idx[{m.i.x, m.i.y}];
-    int b = idx[{m.j.x, m.j.y}];
-    printf("%d %d %.6f", min(a, b), max(a, b), m.d);
+    float m = closest(P);
+    cout << m << endl;
     return 0;
 }

@@ -34,7 +34,7 @@ public:
             parent[s2] = s1;
         }
     }
-    bool differ(int u, intv) // True if not in same tree
+    bool differ(int u, int v) // True if not in same tree
     {
         return find(u) != find(v);
     }

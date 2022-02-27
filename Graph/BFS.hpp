@@ -1,18 +1,25 @@
-#include "Graph/Graph.hpp"
-void BFS(Graph *G, int start, Queue<int> *Q)
+#include <vector>
+#include <queue>
+using namespace std;
+void BFS(vector<vector<int>> &adj, int start)
 {
-    int v, w;
-    Q->enqueue(start); // Initialize Q
-    G->setMark(start, VISITED);
-    while (Q->length() != 0)
+    int n = adj.size();
+    vector<bool> visited(n);
+    queue<int> q;
+    q.push(start); // Initialize Q
+    visited[start] = true;
+    while (!q.empty())
     { // Process all vertices on Q
-        v = Q->dequeue();
+        int u = q.front();
+        q.pop();
         // PreVisit(G, v); // Take appropriate action
-        for (w = G->first(v); w < G->n(); w = G->next(v, w))
-            if (G->getMark(w) == UNVISITED)
+        for (int v : adj[u])
+        {
+            if (!visited[v])
             {
-                G->setMark(w, VISITED);
-                Q->enqueue(w);
+                visited[v] = true;
+                q.push(v);
             }
+        }
     }
 }
