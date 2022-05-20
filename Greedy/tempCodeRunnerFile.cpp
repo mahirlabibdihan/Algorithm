@@ -1,4 +1,4 @@
-bool operator()(const Job &a, const Job &b)
-    {
-        return a.deadline < b.deadline;
-    }
+        // else if (this->deadline == j.deadline)
+        // {
+        //     return this->profit < j.profit;
+        // }

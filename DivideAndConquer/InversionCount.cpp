@@ -25,7 +25,7 @@ int64 merge(int arr[], int left, int mid, int right)
         {
             temp[k] = arr[i++];
         }
-        else
+        else // (arr[i] > arr[j])
         {
             temp[k] = arr[j++];
             /*An inversion in an array A of n distinct elements is a pair of indices (i, j) such that i < j and

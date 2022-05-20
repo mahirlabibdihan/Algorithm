@@ -31,7 +31,7 @@ class Comp
 public:
     bool operator()(const Job &a, const Job &b)
     {
-        return a.deadline < b.deadline;
+        return a.profit < b.profit;
     }
 };
 
@@ -74,10 +74,14 @@ int main()
         jobs[i].id = i;
     }
     vector<Job> sequence = jobSequence(jobs);
+    int maxProfit = 0;
     for (int i = sequence.size() - 1; i >= 0; i--)
     {
         cout << sequence[i].id << " ";
+        maxProfit += sequence[i].profit;
     }
+    cout << endl
+         << maxProfit << endl;
 }
 /*
 5

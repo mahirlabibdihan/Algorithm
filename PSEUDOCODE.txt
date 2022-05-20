@@ -1,0 +1,15 @@
+    Function names:
+    UPPER-BOUND(A[a1,... ,an])
+    PUSH()
+    --------------------
+    Assignment: <-
+    a <- b
+    Equality: =
+    if a = b
+    Swap:
+    exchange a <-> b 
+    Sort: 
+    sort array A in decreasing order based on weight
+    for loop:
+    for i<-1 to n
+    1 indexed arrays

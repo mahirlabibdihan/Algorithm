@@ -22,7 +22,28 @@ float dist(const Point &p1, const Point &p2)
     return sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
 }
 // O(7n)
-float merge(vector<Point> &P, int start, int mid, int end, float d)
+int stripClosest(vector<Point> &P, int start, int end, int midX, float d)
+{
+    vector<Point> strip; // Array of points whose x are in range of [midX-d,midX+d]
+    for (int i = start; i < end; i++)
+    {
+        if (abs(P[i].x - midX) < d)
+        {
+            strip.push_back(P[i]);
+        }
+    }
+    float minDist = d; // Initialize the minimum distance as d
+    int n = strip.size();
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < min(i + 7, n); j++)
+        {
+            minDist = min(minDist, dist(strip[i], strip[j]));
+        }
+    }
+    return minDist;
+}
+void merge(vector<Point> &P, int start, int mid, int end)
 {
     vector<Point> temp(end);
     for (int i = start, j = mid, k = start; i < mid || j < end; k++)
@@ -48,34 +69,8 @@ float merge(vector<Point> &P, int start, int mid, int end, float d)
     {
         P[i] = temp[i];
     }
-    vector<Point> strip;
-    for (int i = start; i < end; i++)
-    {
-        if (abs(P[i].x - P[mid].x) < d)
-        {
-            strip.push_back(P[i]);
-        }
-    }
-    float minDist = d; // Initialize the minimum distance as d
-    int n = strip.size();
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = i + 1; j < min(i + 8, n); j++)
-        {
-            float ds = dist(strip[i], strip[j]);
-            if (ds < minDist)
-            {
-                minDist = ds;
-            }
-            else
-            {
-                break;
-            }
-        }
-    }
-    return minDist;
 }
-// 0(7n)
+// 2T(n/2)+O(n)
 float divide(vector<Point> P, int start, int end)
 {
     if (end - start <= 1)
@@ -83,14 +78,16 @@ float divide(vector<Point> P, int start, int end)
         return FLT_MAX;
     }
     int mid = (start + end) / 2;
+    int midX = P[mid].x;
     float dl = divide(P, start, mid); // T(n/2)
     float dr = divide(P, mid, end);   // T(n/2)
     float d = min(dl, dr);
-    float dm = merge(P, start, mid, end, d); // O(n)
-    return dm;
+    merge(P, start, mid, end);                   // O(n) - Merges based on y
+    return stripClosest(P, start, end, midX, d); // O(n)
 }
 float closest(vector<Point> P)
 {
+    // Sort based on x
     sort(P.begin(), P.end(), compareX); // O(nlogn)
     return divide(P, 0, P.size());      // O(nlogn)
 }

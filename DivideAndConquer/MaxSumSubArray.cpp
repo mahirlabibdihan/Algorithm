@@ -77,9 +77,9 @@ int maxSubArraySum(int arr[], int l, int r)
    }
 
    int m = (l + r) / 2;
+   int css = maxCrossingSum(arr, l, m, r);
    int lss = maxSubArraySum(arr, l, m);
    int rss = maxSubArraySum(arr, m + 1, r);
-   int css = maxCrossingSum(arr, l, m, r);
    return max(css, max(lss, rss));
 }
 

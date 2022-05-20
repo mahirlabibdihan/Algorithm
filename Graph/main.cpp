@@ -1,20 +1,28 @@
-#include "Prim.hpp"
-#include "Kruskal.hpp"
-#include <iostream>
+#include "TopologicalSort.hpp"
 int main()
 {
     int n, m;
     cin >> n >> m;
-    vector<vector<pair<int, int>>> adj(n);
+    vector<int> adj[n + 1];
     for (int i = 0; i < m; i++)
     {
-        int u, v, w;
-        cin >> u >> v >> w;
-        adj[u].push_back({v, w});
-        adj[v].push_back({u, w});
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
     }
-    cout << Kruskal(adj) << endl;
-    cout << Prim(adj, 0) << endl;
+    vector<int> topo_order;
+    topo_order = topoSortBFS(adj, n);
+    for (int i : topo_order)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+    topo_order = topoSortDFS(adj, n);
+    for (int i : topo_order)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
 }
 /*
 9 12

@@ -1,47 +1,47 @@
-#include<iostream>
+#include <iostream>
 #include <vector>
-#include<map>
-
+#include <queue>
 using namespace std;
-map<int,int> color;
-map<int,bool> visited;
-map<int,vector<int>> adj;
 
-void isBipartite(int i)
+// Connected graph
+bool isBipartite(vector<vector<int>> &adj, int start)
 {
-	visited[i]=true;
-	for(int a:adj[i])
-	{
-		if(!visited[a])
+	int V = adj.size();
+	vector<int> color(V, 0);
+	queue<int> q;
+	q.push(start); // Initialize Q
+	color[start] = 1;
+	while (!q.empty())
+	{ // Process all vertices on Q
+		int u = q.front();
+		q.pop();
+		// PreVisit(G, v); // Take appropriate action
+		for (int v : adj[u])
 		{
-			if(color[i]==1)
+			if (!color[v])
 			{
-				color[a]=2;
-				c2++;
+				color[v] = -color[u];
+				q.push(v);
 			}
-			else
+			else if (color[u] == color[v])
 			{
-				color[a]=1;
-				c1++;
+				return false;
 			}
-			coloring(a);
 		}
 	}
+	return true;
 }
 int main()
 {
-	int n;
-	cin>>n;
-	
-	for(int i=0;i<n-1;i++)
+	int n, m;
+	cin >> n >> m;
+	vector<vector<int>> adj(n);
+	for (int i = 0; i < m; i++)
 	{
-		int u,v;
-		cin>>u>>v;
+		int u, v;
+		cin >> u >> v;
 		adj[u].push_back(v);
 		adj[v].push_back(u);
 	}
-	color[1]=1;
-	c1++;
-	isBipartite(1);
-	cout<<result<<endl;
+	cout << (isBipartite(adj, 0) ? "Yes" : "No") << endl;
 }

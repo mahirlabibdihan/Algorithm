@@ -79,8 +79,7 @@ string LCS(string s1, string s2)
     {
         for (int j = 0; j <= s2_size; j++)
         {
-            123651 /.., m,
-                if (i == 0 || j == 0)
+            if (i == 0 || j == 0)
             {
                 dp[i][j] = 0;
             }
