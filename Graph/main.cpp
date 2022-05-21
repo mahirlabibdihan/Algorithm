@@ -1,28 +1,17 @@
-#include "TopologicalSort.hpp"
+#include <iostream>
+#include "DAG.hpp"
 int main()
 {
     int n, m;
     cin >> n >> m;
-    vector<int> adj[n + 1];
+    vector<int> adj[n];
     for (int i = 0; i < m; i++)
     {
         int u, v;
         cin >> u >> v;
         adj[u].push_back(v);
     }
-    vector<int> topo_order;
-    topo_order = topoSortBFS(adj, n);
-    for (int i : topo_order)
-    {
-        cout << i << " ";
-    }
-    cout << endl;
-    topo_order = topoSortDFS(adj, n);
-    for (int i : topo_order)
-    {
-        cout << i << " ";
-    }
-    cout << endl;
+    cout << isDAG(adj, n) << endl;
 }
 /*
 9 12
