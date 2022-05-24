@@ -19,7 +19,7 @@ void DFS(int u, vector<int> adj[], vector<bool> &visited)
 int getMother(vector<int> adj[], int n)
 {
     vector<bool> visited(n, false);
-    int v;
+    int v; // Mother vertex
     for (int i = 0; i < n; i++)
     {
         if (!visited[i])
@@ -34,6 +34,8 @@ int getMother(vector<int> adj[], int n)
 int findMother(vector<int> adj[], int n)
 {
     int mother = getMother(adj, n);
+
+    // Validate mother vertex
     vector<bool> visited(n, false);
     DFS(mother, adj, visited);
     for (int i = 0; i < n; i++)
