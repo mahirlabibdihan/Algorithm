@@ -40,6 +40,28 @@ void transpose(vector<int> adj[], vector<int> adjTr[], int n)
         }
     }
 }
+bool isSCC(vector<int> adj[], int n)
+{
+    vector<bool> visited(n + 1, false);
+    stack<int> st;
+    for (int i = 1; i <= n; i++)
+    {
+        if (!visited[i])
+        {
+            fillOrder(i, adj, visited, st);
+        }
+    }
+    vector<int> adjTr[n + 1];
+    transpose(adj, adjTr, n);
+    fill(visited.begin(), visited.end(), false);
+    vector<vector<int>> sccs;
+    int u = st.top();
+    st.pop();
+    vector<int> scc;
+    getSCC(u, adjTr, visited, scc);
+    return (scc.size() == n);
+}
+
 vector<vector<int>> getSCCs(vector<int> adj[], int n)
 {
     vector<bool> visited(n + 1, false);

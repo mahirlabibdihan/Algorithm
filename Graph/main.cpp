@@ -1,17 +1,17 @@
 #include <iostream>
-#include "DAG.hpp"
+#include "tarjan.hpp"
 int main()
 {
     int n, m;
     cin >> n >> m;
-    vector<int> adj[n];
+    vector<int> adj[n + 1];
     for (int i = 0; i < m; i++)
     {
         int u, v;
         cin >> u >> v;
         adj[u].push_back(v);
     }
-    cout << isDAG(adj, n) << endl;
+    getSCCs(adj, n);
 }
 /*
 9 12

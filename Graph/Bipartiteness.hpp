@@ -16,6 +16,8 @@ bool isBipartite(vector<vector<int>> &adj, int start)
 		int u = q.front();
 		q.pop();
 		// PreVisit(G, v); // Take appropriate action
+		//  1 - First color
+		// -1 - Second color
 		for (int v : adj[u])
 		{
 			if (!color[v])
@@ -30,18 +32,4 @@ bool isBipartite(vector<vector<int>> &adj, int start)
 		}
 	}
 	return true;
-}
-int main()
-{
-	int n, m;
-	cin >> n >> m;
-	vector<vector<int>> adj(n);
-	for (int i = 0; i < m; i++)
-	{
-		int u, v;
-		cin >> u >> v;
-		adj[u].push_back(v);
-		adj[v].push_back(u);
-	}
-	cout << (isBipartite(adj, 0) ? "Yes" : "No") << endl;
 }
