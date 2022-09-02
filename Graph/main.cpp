@@ -1,17 +1,24 @@
 #include <iostream>
-#include "TreeDiagram.hpp"
+#include "ShortestPath.hpp"
 int main()
 {
     int n, m;
     cin >> n >> m;
-    vector<int> adj[n];
+    vector<pair<int, float>> adj[n];
     for (int i = 0; i < m; i++)
     {
         int u, v;
-        cin >> u >> v;
-        adj[u].push_back(v);
+        float w;
+        cin >> u >> v >> w;
+        adj[u].push_back({v, w});
     }
-    cout << getDiagram(adj, n) << endl;
+    vector<float> dist(n);
+    vector<int> parent(n);
+    DAG_SSSP(adj, n, 1, dist, parent);
+    for (int i = 0; i < n; i++)
+    {
+        cout << dist[i] << " ";
+    }
 }
 /*
 9 12

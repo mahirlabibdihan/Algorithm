@@ -204,6 +204,26 @@ namespace D
     }
 };
 
+namespace D
+{
+    int knapsack(vector<Item> items, int n, int W)
+    {
+        vector<vector<int>> dp(n + 1, vector<int>(W + 1, 0));
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j <= W; j++)
+            {
+                dp[i + 1][j] = max(dp[i + 1][j], dp[i][j]);
+                if (j + items[i].weight <= W)
+                {
+                    dp[i + 1][j + items[i].weight] = max(dp[i + 1][j + items[i].weight], items[i].value + dp[i][j]);
+                }
+            }
+        }
+        return dp[n][W];
+    }
+};
+
 int main()
 {
     int n, weightLimit;

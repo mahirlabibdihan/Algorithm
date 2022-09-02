@@ -4,9 +4,9 @@ using namespace std;
 #define ll long long
 #define pll pair<ll, ll>
 #define MAX 100001
-vector<vector<pll>> edge(MAX); //connected vertex
-vector<ll> dist(MAX, INF);     //minimum distance of a vertex from the source
-vector<ll> par(MAX, -1);       //parent vertex of a child vertex
+vector<vector<pll>> edge(MAX); // connected vertex
+vector<ll> dist(MAX, INF);     // minimum distance of a vertex from the source
+vector<ll> par(MAX, -1);       // parent vertex of a child vertex
 
 int n, m, u, v, a, b, c;
 

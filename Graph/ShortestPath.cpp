@@ -23,6 +23,7 @@ vector<int> BFS(Graph *G, int start, int end, Queue<int> *q)
                 q->enqueue(w);
                 par[w] = v;
             }
+            
         }
     }
     return par;

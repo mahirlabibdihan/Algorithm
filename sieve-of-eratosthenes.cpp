@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 /*int main()
@@ -11,35 +11,60 @@ using namespace std;
 
   for(i=0;i<n;i++) if(y[i]) cout<<i<<" ";
 }*/
-  bool x[1000000001]={};
-//int main()
+bool x[1000000001] = {};
+// int main()
 //{
 //
-//    int n,i,j;
-//    cin>>n;
-//    bitset<10000000>y;
-//    for(i=2;i*i<=n;i++)if(!y[i])for(j=i*i;j<=n;j+=i)y[j]=1;
+//     int n,i,j;
+//     cin>>n;
+//     bitset<10000000>y;
+//     for(i=2;i*i<=n;i++)if(!y[i])for(j=i*i;j<=n;j+=i)y[j]=1;
 //
-//    cout<<y.count()<<endl;
-//    //for(i=2; i<n; i++) if(!y[i]) cout<<i<<" ";
-//}
+//     cout<<y.count()<<endl;
+//     //for(i=2; i<n; i++) if(!y[i]) cout<<i<<" ";
+// }
 
-//int main()
+// int main()
 //{ int n,i,j;  cin>>n;
 //
-//for(i=2;i*i<=n;i++) if(!(n%i)) break; if(i*i>n&n>1) cout<<"PRIME"; else cout<<"NOT PRIME";}
-
-
+// for(i=2;i*i<=n;i++) if(!(n%i)) break; if(i*i>n&n>1) cout<<"PRIME"; else cout<<"NOT PRIME";}
 
 void siv()
 {
-    int i,j,c=n-1;
-    for(i=2;i*i<MAX;i++)if(!x[i])for(j=i*i;j<=n;j+=i){if(!x[j]) c--; x[j]=1;}
+  int i, j, c = n - 1;
+  for (i = 2; i * i < MAX; i++)
+  {
+    if (!x[i])
+    {
+      for (j = i * i; j <= n; j += i)
+      {
+        if (!x[j])
+          c--;
+        x[j] = 1;
+      }
+    }
+  }
 
-    outn(c);
-    for(i=2;i<MAX;i++)if(!x[i])cout<<i<<" ";
+  outn(c);
+  for (i = 2; i < MAX; i++)
+    if (!x[i])
+      cout << i << " ";
 }
 
+void SieveOfEratosthenes(vector<int> &prime, int n)
+{
+  fill(prime.begin(), prime.end(), true);
+  for (int p = 2; p * p <= n; p++)
+  {
+    if (prime[p] == true)
+    {
+      for (int i = p * p; i <= n; i += p)
+      {
+        prime[i] = false;
+      }
+    }
+  }
+}
 int main()
 {
   siv();

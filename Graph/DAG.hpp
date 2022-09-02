@@ -32,3 +32,4 @@ bool isDAG(vector<int> adj[], int n)
     }
     return true;
 }
+
