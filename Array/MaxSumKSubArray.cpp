@@ -17,11 +17,7 @@ int maxSum(int arr[], int n, int k)
    for (int i = k; i < n; i++)
    {
       sum += arr[i] - arr[i - k];
-
-      if (maxSum < sum)
-      {
-         maxSum = sum;
-      }
+      maxSum = max(sum, maxSum);
    }
    return maxSum;
 }
